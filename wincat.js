@@ -119,6 +119,13 @@ function optionB(){
     }
 }
 
+//option -append
+function optionAppend(){
+    let file2 = filesArr[1]; //2nd file
+    let file1 = filesArr[0]; //1st file
+    let content = fs.readFileSync(file1) + "";
+    fs.appendFileSync(file2,content);
+}
 
 let option = "";
 //empty option array -> directly display content of file/files
@@ -147,10 +154,9 @@ else{
     else if(optionArr.includes("-s")){
         optionS();
     }
-
     //append content of 1st file to 2ndfile
     else if(optionArr.includes("-append")){
-
+        optionAppend();
     }
     //highlight end of file
     else if(optionArr.includes("-heof")){
