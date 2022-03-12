@@ -58,6 +58,27 @@ function copyFileContent(){
     fs.writeFileSync(file2,content);
 }
 
+function getContentTogether(){
+    let content = "";
+    for(let i=0; i<filesArr.length;i++){
+        let fileContent = fs.readFileSync(filesArr[i]);
+        content += fileContent + "\r\n";
+    }
+    return content;
+}
+
+//print file content with line number
+function printWithLineNo(){
+    let fileContent = getContentTogether();
+    outputArr = fileContent.split("\r\n");
+    let index = 1;
+    for(let i=0; i<outputArr.length;i++){
+        outputArr[i] = index + ")"+ outputArr[i];
+        index += 1;
+    }
+}
+
+
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
@@ -75,7 +96,7 @@ else{
     }
     //display content of file preeciding with line no
     else if(optionArr.includes("-n")){
-
+        printWithLineNo();
     }
     //not number empty lines
     else if(optionArr.includes("-b")){
