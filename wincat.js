@@ -21,14 +21,34 @@ for(let i=0; i<inputArr.length; i++){
     }
 }
 
-console.log(inputArr);
-console.log(optionArr);
-console.log(filesArr);
+// console.log(inputArr);
+// console.log(optionArr);
+// console.log(filesArr);
+
+
+function displayContent(){
+    for(let i=0; i<filesArr.length; i++){
+        let doesExist = fs.existsSync(filesArr[i]);
+        if(!doesExist){
+            console.log("file doesn't exist");
+            return ;
+        }
+    }
+    
+    let content = "";
+    for(let i=0; i<filesArr.length;i++){
+        let fileContent = fs.readFileSync(filesArr[i]);
+        content = fileContent + " ";
+        outputArr.push(content);
+    }
+    //
+}
+
 
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
-    // displayContent();
+    displayContent();
 }
 else{
     //create a file
@@ -66,8 +86,10 @@ else{
     //reverse printing
     else if(optionArr.includes("-reverse")){
 
-    }
-    
-    
+    }   
 }
 
+//final output
+for(let i=0; i<outputArr.length; i++){
+    console.log(outputArr[i]);
+}
