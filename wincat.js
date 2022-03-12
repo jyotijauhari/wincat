@@ -152,6 +152,15 @@ function optionW(){
       })
 }
 
+// option -reverse
+function optionReverse(){
+    let fileContent = getContentTogether();
+    let tempArr = fileContent.split("\r\n");
+    for(let i=tempArr.length-1; i>=0; i--){
+        outputArr.push(tempArr[i]);
+    }
+}
+
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
@@ -193,7 +202,7 @@ else{
     }
     //reverse printing
     else if(optionArr.includes("-reverse")){
-
+        optionReverse();
     }   
 }
 
