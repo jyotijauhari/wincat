@@ -41,9 +41,14 @@ function displayContent(){
         content = fileContent + " ";
         outputArr.push(content);
     }
-    //
+    // console.log(content);
 }
 
+//creating new empty file 
+function createFile(){
+    let filename = filesArr[0];
+    fs.appendFileSync(filename,'');
+}
 
 let option = "";
 //empty option array -> directly display content of file/files
@@ -54,6 +59,7 @@ else{
     //create a file
     if(optionArr.includes("-create")){
         option = "-create";
+        createFile();
     }
     //display content of file preeciding with line no
     else if(optionArr.includes("-n")){
