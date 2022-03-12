@@ -127,6 +127,14 @@ function optionAppend(){
     fs.appendFileSync(file2,content);
 }
 
+//option -heof
+function optionHEOF(){
+    let file1 = filesArr[0];
+    let content = fs.readFileSync(file1) + "\r\n";
+    content += "--> end of file <--";
+    outputArr.push(content);
+}
+
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
@@ -160,7 +168,7 @@ else{
     }
     //highlight end of file
     else if(optionArr.includes("-heof")){
-
+        optionHEOF();
     }
     //write in existing file by taking input from console
     else if(optionArr.includes("-w")){
