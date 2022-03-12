@@ -135,6 +135,23 @@ function optionHEOF(){
     outputArr.push(content);
 }
 
+// option -w 
+function optionW(){
+    let file1 = filesArr[0];
+    createFile();
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+      })
+      
+      readline.question(``, input => {
+        console.log(input)
+        let content = input;
+        fs.appendFileSync(file1,content);
+        readline.close()
+      })
+}
+
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
@@ -172,7 +189,7 @@ else{
     }
     //write in existing file by taking input from console
     else if(optionArr.includes("-w")){
-
+        optionW();
     }
     //reverse printing
     else if(optionArr.includes("-reverse")){

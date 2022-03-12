@@ -1,0 +1,1 @@
+i am writing data in file f6 write after creation from console
