@@ -50,6 +50,14 @@ function createFile(){
     fs.appendFileSync(filename,'');
 }
 
+//copy content of 1st file to 2nd file (replace)
+function copyFileContent(){
+    let file2 = filesArr[1]; //2nd file
+    let file1 = filesArr[0]; //1st file
+    let content = fs.readFileSync(file1) + "";
+    fs.writeFileSync(file2,content);
+}
+
 let option = "";
 //empty option array -> directly display content of file/files
 if(optionArr.length == 0){
@@ -60,6 +68,10 @@ else{
     if(optionArr.includes("-create")){
         option = "-create";
         createFile();
+    }
+    //copy content of 1stfile to 2ndfile
+    else if(optionArr.includes("-copy")){
+        copyFileContent();
     }
     //display content of file preeciding with line no
     else if(optionArr.includes("-n")){
@@ -73,10 +85,7 @@ else{
     else if(optionArr.includes("-s")){
 
     }
-    //copy content of 1stfile to 2ndfile
-    else if(optionArr.includes("-copy")){
 
-    }
     //append content of 1st file to 2ndfile
     else if(optionArr.includes("-append")){
 

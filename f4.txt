@@ -1,0 +1,7 @@
+hello
+there
+this 
+is 
+file 1.
+
+I written this line normally, dont mind ;).
