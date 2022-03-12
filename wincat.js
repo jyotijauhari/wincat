@@ -78,6 +78,47 @@ function printWithLineNo(){
     }
 }
 
+//suppress repeated empty lines
+function optionS(){
+    let tempArr = [];
+    let fileContent = getContentTogether();
+    outputArr = fileContent.split("\r\n");
+    for (let i = 1; i < outputArr.length; i++){
+        if (outputArr[i] == "" && outputArr[i - 1] == "") {
+            outputArr[i] = null;
+        }
+        else if (outputArr[i] == "" && outputArr[i - 1] == null) {
+            outputArr[i] = null;
+        }
+    }
+    // arr with multiple '' replaced by null 
+    // console.table(contentArr);
+
+    //push everything in tempArr except null
+    for (let i = 0; i < outputArr.length; i++){
+        if (outputArr[i] != null) {
+            tempArr.push(outputArr[i]);
+        }
+    }
+    outputArr = tempArr;
+}
+
+//option -b
+function optionB(){
+    let fileContent = getContentTogether();
+    outputArr = fileContent.split("\r\n");
+    let index = 1;
+    for(let i=0; i<outputArr.length;i++){
+        if (outputArr[i] == "" ) {
+            outputArr[i] = outputArr[i];
+        }
+        else{
+            outputArr[i] = index + ")" + outputArr[i];
+            index += 1;
+        }
+    }
+}
+
 
 let option = "";
 //empty option array -> directly display content of file/files
@@ -98,13 +139,13 @@ else{
     else if(optionArr.includes("-n")){
         printWithLineNo();
     }
-    //not number empty lines
+    //not numbering empty lines
     else if(optionArr.includes("-b")){
-
+        optionB();
     }
     //supress repeated empty line
     else if(optionArr.includes("-s")){
-
+        optionS();
     }
 
     //append content of 1st file to 2ndfile
