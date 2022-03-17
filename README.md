@@ -1,8 +1,10 @@
 # wincat
-cat commands for windows
+- wincat : cat commands for windows.
+- cat command: Cat command is very frequently used in Linux. It reads data from the file and gives their content as output. It helps us to create, view, concatenate files.
+
 <br>
-<br>
-### Commands :
+
+# Commands :
 
 1. To view a single file
 ```
@@ -114,3 +116,7 @@ eg.
 ```
 node wincat.js -reverse f1.txt
 ```
+
+# Edge case
+
+- If file entered is not found then it gives file doesn't exist error. ✅
